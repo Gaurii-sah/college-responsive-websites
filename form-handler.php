@@ -3,23 +3,23 @@ $name = $_POST["name"];
 $visitor_email = $_POST["email"];
 $subject = $_POST["subject"];
 $message = $_POST["message"];
-$toEmail  = $_POST["sanjusaah649@gmail.com"];
 
+$email_from = "info@website.com";
 
+$email_subject = "New Form Submission";
 
-
-$mailHeaders = "User Name: $name.\n". 
+$email_body = "User Name: $name.\n". 
                 "User Email: $visitor_email.\n". 
                  "Subject: $subject.\n". 
                     "User Message: $message .\n";
 
+$to  = "aarush.sharma6@gmail.com";
 
+$headers = "From: $email_from \r\n";
 
+$headers .= "Reply-To: $visitor_email \r\n";
 
-
-if(mail($toEmail, $name, $mailHeaders)){
-   $message = "Your Information is Submitted To Adminstration.";
-}
+mail($to, $email_subject, $email_body, $headers);
 
 #after submission, user will be at the same page
 header("Location: contact.html");
